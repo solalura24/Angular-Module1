@@ -1,32 +1,34 @@
 (function () {
 'use strict';
 
-angular.module('LunchCheck', [])
+angular.module('LunchCheckApp', [])
 
 .controller('LunchCheckController',LunchCheckController);
 
 LunchCheckController.$inject = ['$scope'];
+function LunchCheckController ($scope){
+	$scope.name = "";
 
-function LunchCheckController($scope){
-	$scope.dishes = [];
-	
-	$scope.checklunch = function (){
+$scope.sayMessage = function (string){
 
-		 if($scope.dishes === -1) {
-                return "Please enter data first!";
-            } 
-              if($scope.dishes.split(",").length <= 3) {
-                return "Enjoy!";
-            } 
-            else{
-                return "Too Much!";
-            }
-         }
-     
+	var array = string.split(",");
+
+	if (array ===undefined){
+		console.log(Please enter data first!);
 	}
+
+	else if (array <==3){
+		console.log(Enjoy your meal!);
+	}
+
+	else {
+		console.log("Too much!");
+	}
+
+
+}
+
+
 	
 })();
 
-// $scope.message1 = "Enjoy!";
-// 	$scope.message2 = "Too Much!";
-// 	$scope.message3 =  "Please enter data first!";
