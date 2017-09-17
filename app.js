@@ -7,28 +7,45 @@ angular.module('LunchCheckApp', [])
 
 LunchCheckController.$inject = ['$scope'];
 function LunchCheckController ($scope){
-	$scope.name = "";
 
-$scope.sayMessage = function (string){
+	$scope.checkIfTooMuch = function(){	
 
-	var array = string.split(",");
+	if ($scope.foodlist === "" || $scope.foodlist === undefined
+            || $scope.foodlist.length === 0)
+        {
+            $scope.message =  "Please enter food first!";
+           
+        }
+        
+        else 
+        {
+            var InputItems = $scope.foodlist.split(",");
+            var stripedList = [];
 
-	if (array ===undefined){
-		console.log(Please enter data first!);
-	}
+            for(var i=0, j= InputItems.length; i < j; i++)
+            {
+                if (InputItems[i].trim() !== "")
+                {
+                    stripedList.push(InputItems[i]);
+                }
+            }
 
-	else if (array <==3){
-		console.log(Enjoy your meal!);
-	}
+            if (stripedList.length <= 3)
+            {
+                $scope.message =  "Enjoy your lunch!";
+                
+            }
+            else
+            {
+                $scope.message = "Too much!";
+                
+            }
+        }
 
-	else {
-		console.log("Too much!");
-	}
-
+    };	
 
 }
-
-
 	
-})();
+})();	
+
 
